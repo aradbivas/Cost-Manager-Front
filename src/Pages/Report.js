@@ -52,7 +52,6 @@ function inputHandler(e){
         <input
           name="year"
           type="number"
-          max='2022'
           required
           onChange={inputHandler}
            />

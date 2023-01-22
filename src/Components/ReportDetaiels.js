@@ -1,29 +1,43 @@
-// import React from "react";
-// const ReportDetails = ({report}) =>
-// {
-//     return (
-//         <div className='workout-details'>
-//             {report.category != undefined &&
-//                 <h3> Category: {report.category}</h3>
-//             }
-//             {report.sum != undefined &&
-//                 <p><strong>Description: </strong>{report.description}</p>
-//
-//             }
-//             {report.sum != undefined &&
-//                             <p><strong>Price: </strong>{report.sum}</p>
-//             }
-//
-//             {
-//                 report.totalForCategory != undefined &&
-//                 <p><strong>Category total: {report.totalForCategory}</strong></p>
-//             }
-//             {
-//                 report.totalSum != undefined &&
-//                 <p><strong>Total for month:</strong>{report.totalSum}</p>
-//             }
-//         </div>
-//     )
-// }
-//
-// export default ReportDetails;
+import React from "react";
+import {useAuthContext} from "../hooks/useAuthContext";
+import {useReportContext} from "../hooks/useReportContext";
+
+const ReportDetails = (props) =>
+{
+    const {user} = useAuthContext();
+    const {reports,dispatch} = useReportContext()
+    const handleDelete = async () =>
+    {
+        const response = await fetch('http://localhost:4020/api/report/deleteItem', {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`},
+            body: JSON.stringify({itemId:props.reportId, year: props.year, month: props.month, category:props.category})
+        })
+        const json = await response.json();
+        if(response.ok)
+        {
+
+            dispatch({type:"DELETE_REPORTS", payload:json})
+        }
+
+    }
+    return (
+        <div className='workout-details'>
+            {props.category !== undefined &&
+                <div>
+                    <p><strong>Category: </strong>
+                        {props.category}</p>
+                    <p><strong>Description: </strong>{props.description}</p>
+                    <p><strong>Price: </strong>{props.sum}</p>
+                    <span className="span-update">UPDATE</span>
+
+                    <span className="span-delete" onClick={handleDelete}>DELETE</span>
+                </div>
+            }
+
+        </div>
+    )
+}
+
+export default ReportDetails;
