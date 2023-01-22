@@ -10,7 +10,7 @@ export const useSignup = () =>
     {
         setISLoading(true);
         setError(null);
-        const response = await  fetch('https://costs-manager-backend.netlify.app/server/api/user/register/',
+        const response = await  fetch('https://cost-manager.onrender.com//api/user/register/',
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
