@@ -14,7 +14,7 @@ export const useReport = () =>
         setError(null);
         setArray([]);
         if(user){
-            const response = await  fetch("https://cost-manager.onrender.com/" +year + '/' + month + '/',
+            const response = await  fetch("https://cost-manager.onrender.com/" +year + '/' + month,
                 {
                     method: 'GET',
                     headers: {'Content-Type': 'application/json',
