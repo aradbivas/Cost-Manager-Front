@@ -51,11 +51,12 @@ export default function Submit() {
                     Category:
 
                     <select name="category"  type="text" required onChange={inputHandler}>
+                        <option value="" disabled selected>Select your category</option>
                         <option value="Food">Food</option>
                         <option value="Home">Home</option>
-                        <option value="Utilities ">Sport</option>
-                        <option value="Medical & Healthcare">Clothing</option>
-                        <option value="Transportation">Other</option>
+                        <option value="Sport ">Sport</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Other">Other</option>
 
                     </select>
 
