@@ -47,7 +47,7 @@ export const useReport = () =>
         setISLoading(true);
         setError(null);
         if(user){
-            const response = await fetch('https://cost-manager.onrender.com//api/report/deleteItem',
+            const response = await fetch('https://cost-manager.onrender.com/api/report/deleteItem',
                 {
                 method: 'DELETE',
                 headers: {'Content-Type': 'application/json',
