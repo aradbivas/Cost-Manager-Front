@@ -16,7 +16,7 @@ export const useReport = () =>
         setError(null);
         setArray([]);
         if(user){
-            const response = await  fetch("http://localhost:4020/api/report/getreport/"+ year + '/' + month + '/',
+            const response = await  fetch("https://cost-manager.onrender.com/api/report/getreport/"+ year + '/' + month + '/',
                 {
                     method: 'GET',
                     headers: {'Content-Type': 'application/json',
